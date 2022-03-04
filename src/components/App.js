@@ -30,9 +30,11 @@ function App() {
       />
 
       <ul>
-        {searchArray.map((name) => {
-          return <li key={name}>{name}</li>;
-        })}
+        {searchArray
+          .filter((name) => name.match(new RegExp(searchValue, "i")))
+          .map((name) => {
+            return <li key={name}>{name}</li>;
+          })}
       </ul>
     </div>
   );
