@@ -19,8 +19,10 @@ const searchArray = [
 ];
 function App() {
   const [searchValue, setSearchValue] = useState(" ");
+  console.log(searchValue.length);
   return (
     <div id="main">
+      <h2>Search</h2>
       <input
         type="text"
         name="search"
@@ -30,9 +32,13 @@ function App() {
       />
       <h2>Results</h2>
       <ul>
-        {searchArray.map((name) => {
-          return <li key={name}>{name}</li>;
-        })}
+        {searchValue.length !== 0
+          ? searchArray
+              .filter((name) => name.match(new RegExp(searchValue, "i")))
+              .map((name) => {
+                return <li key={name}>{name}</li>;
+              })
+          : null}
       </ul>
     </div>
   );
