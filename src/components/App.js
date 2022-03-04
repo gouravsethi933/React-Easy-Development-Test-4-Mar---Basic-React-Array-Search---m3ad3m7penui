@@ -28,13 +28,11 @@ function App() {
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
       />
-
+      <h2>Results</h2>
       <ul>
-        {searchArray
-          .filter((name) => name.match(new RegExp(searchValue, "i")))
-          .map((name) => {
-            return <li key={name}>{name}</li>;
-          })}
+        {searchArray.map((name) => {
+          return <li key={name}>{name}</li>;
+        })}
       </ul>
     </div>
   );
